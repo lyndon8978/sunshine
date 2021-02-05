@@ -1,0 +1,2 @@
+add_executable(test_file_collector test_file_collector.cpp)
+target_link_libraries(test_file_collector file_collector)
