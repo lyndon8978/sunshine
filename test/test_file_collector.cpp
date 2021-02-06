@@ -1,32 +1,27 @@
-#include "../file_collector/video_file_collector.h"
-
-#include "../file_collector/subtitle_file_collector.h"
-
 #include <QDebug>
 
-int main(int argc, char *argv[])
-{
-    ss::VideoFileCollector vfc;
+#include "../file_collector/subtitle_file_collector.h"
+#include "../file_collector/video_file_collector.h"
 
-    vfc.setCurrentDir(QDir("/mnt/data/qbit/Young.Sheldon.S01.1080p.BluRay.x264-SHORTBREHD[rartv]"));
+int main(int argc, char *argv[]) {
+  // ss::VideoFileCollector vfc;
 
-    qDebug() << vfc.getCurrentDir().entryInfoList(QDir::Files| QDir::NoDotAndDotDot, QDir::Name).size();
+  // vfc.setCurrentDir(QDir("/mnt/data/qbit/Young.Sheldon.S01.1080p.BluRay.x264-SHORTBREHD[rartv]
+  // (copy)"));
 
-    vfc.collect();
+  // vfc.collect();
 
-    qDebug() << vfc.getFileList().size();
+  // qDebug() << vfc.getFileList();
 
+  ss::SubtitleFileCollector sfc;
 
-    ss::SubtitleFileCollector sfc;
+  sfc.setCurrentDir(
+      QDir("/home/lyndon/Downloads/15393545508315/"
+           "Young.Sheldon.S01.1080p.BluRay.x264-SHORTBREHD/"));
+  sfc.setKeyWords("chs.eng");
+  sfc.collect();
 
-    sfc.setCurrentDir(QDir("/home/lyndon/Downloads/15393545508315/Young.Sheldon.S01.1080p.BluRay.x264-SHORTBREHD/"));
+  qDebug() << sfc.getFileList().size();
 
-    qDebug() << sfc.getCurrentDir().entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name).size();
-
-    sfc.collect();
-
-    qDebug() << sfc.getFileList().size();
-
-
-    return 0;
+  return 0;
 }

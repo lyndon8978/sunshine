@@ -11,23 +11,50 @@ class FileCollector {
   FileCollector();
   virtual ~FileCollector();
 
-  void collect();
+  /**
+   * @brief Filter files.
+   *
+   */
+  virtual void collect() = 0;
 
+  /**
+   * @brief Set the current dir.
+   *
+   * @param dir
+   */
   void setCurrentDir(const QDir& dir);
 
+  /**
+   * @brief Get the current dir.
+   *
+   * @return const QDir&
+   */
   const QDir& getCurrentDir() const;
 
+  /**
+   * @brief Get collected file list.
+   *
+   * @return const QFileInfoList&
+   */
   const QFileInfoList& getFileList() const;
 
  protected:
+  /**
+   * @brief Extensions of files.
+   *
+   */
   QHash<QString, QString> extensions_;
 
- private:
+  /**
+   * @brief Current directory.
+   *
+   */
   QDir current_dir_;
-
+  /**
+   * @brief The collected file list.
+   *
+   */
   QFileInfoList file_list_;
-
-  bool flag_delete_extras_;
 };
 }  // namespace ss
 

@@ -8,6 +8,25 @@ class VideoFileCollector : public FileCollector {
  public:
   VideoFileCollector();
   ~VideoFileCollector();
+
+  /**
+   * @brief Filter videos.
+   *
+   */
+  void collect();
+
+ private:
+  /**
+   * @brief Remove files or dirs except for selected videos.
+   *
+   */
+  void clear();
+
+  /**
+   * @brief Whether to clean the dir.
+   * 
+   */
+  bool flag_clear_;
 };
 }  // namespace ss
 
