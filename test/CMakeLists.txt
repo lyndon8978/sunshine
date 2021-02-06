@@ -1,2 +1,5 @@
 add_executable(test_file_collector test_file_collector.cpp)
 target_link_libraries(test_file_collector file_collector)
+
+add_executable(test_assembler test_assembler.cpp)
+target_link_libraries(test_assembler file_collector assembler)

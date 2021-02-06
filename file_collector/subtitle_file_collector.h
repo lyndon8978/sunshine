@@ -1,7 +1,8 @@
 #ifndef SS_SUBTITLE_FILE_COLLECTOR_H_
 #define SS_SUBTITLE_FILE_COLLECTOR_H_
 
-#include <QString>
+
+#include <QSharedPointer>
 
 #include "file_collector.h"
 
@@ -10,6 +11,9 @@ class SubtitleFileCollector : public FileCollector {
  public:
   SubtitleFileCollector();
   ~SubtitleFileCollector();
+
+  typedef QSharedPointer<SubtitleFileCollector> Ptr;
+  typedef QSharedPointer<const SubtitleFileCollector> ConstPtr;
 
   /**
    * @brief Collect subtitle files.

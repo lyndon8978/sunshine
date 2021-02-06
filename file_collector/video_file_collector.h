@@ -1,6 +1,8 @@
 #ifndef SS_VIDEO_FILE_COLLECTOR_H_
 #define SS_VIDEO_FILE_COLLECTOR_H_
 
+#include <QSharedPointer>
+
 #include "file_collector.h"
 
 namespace ss {
@@ -8,6 +10,9 @@ class VideoFileCollector : public FileCollector {
  public:
   VideoFileCollector();
   ~VideoFileCollector();
+
+  typedef QSharedPointer<VideoFileCollector> Ptr;
+  typedef QSharedPointer<const VideoFileCollector> ConstPtr;
 
   /**
    * @brief Filter videos.
