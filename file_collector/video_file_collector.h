@@ -20,6 +20,13 @@ class VideoFileCollector : public FileCollector {
    */
   void collect();
 
+  /**
+   * @brief Whether to clear the directory.
+   *
+   * @param flag
+   */
+  void setClearFlag(bool flag);
+
  private:
   /**
    * @brief Remove files or dirs except for selected videos.
@@ -29,7 +36,7 @@ class VideoFileCollector : public FileCollector {
 
   /**
    * @brief Whether to clean the dir.
-   * 
+   *
    */
   bool flag_clear_;
 };

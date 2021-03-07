@@ -16,9 +16,8 @@ int main(int argc, char *argv[]) {
   ss::SubtitleFileCollector sfc;
 
   sfc.setCurrentDir(
-      QDir("/home/lyndon/Downloads/15393545508315/"
-           "Young.Sheldon.S01.1080p.BluRay.x264-SHORTBREHD/"));
-  sfc.setKeyWords("chs.eng");
+      QDir("/home/lyndon/Downloads/161495770759757"));
+  sfc.setKeyWords("简体&英文");
   sfc.collect();
 
   qDebug() << sfc.getFileList().size();

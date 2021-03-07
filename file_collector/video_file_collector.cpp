@@ -9,7 +9,8 @@ ss::VideoFileCollector::VideoFileCollector()
 
 void ss::VideoFileCollector::collect() {
   file_list_.clear();
-  QFileInfoList tmp_file_list = current_dir_.entryInfoList(QDir::Files, QDir::Name);
+  QFileInfoList tmp_file_list =
+      current_dir_.entryInfoList(QDir::Files, QDir::Name);
   for (QFileInfoList::const_iterator itr = tmp_file_list.begin();
        itr != tmp_file_list.end(); ++itr) {
     if (extensions_.contains(itr->suffix())) {
@@ -42,3 +43,5 @@ void ss::VideoFileCollector::clear() {
     }
   }
 }
+
+void ss::VideoFileCollector::setClearFlag(bool flag) { flag_clear_ = flag; }

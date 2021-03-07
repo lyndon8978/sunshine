@@ -14,18 +14,23 @@ void ss::Assembler::assemble(VideoFileCollector::ConstPtr vfcp,
        itr != video_file_list.end(); ++itr) {
     int index = getBestMatchSubtitle(*itr, subtitle_file_list);
     if (index > -1) {
-      // 1. find the pair subtitle
-      qDebug() << *itr;
-      qDebug() << subtitle_file_list.at(index);
-      qDebug() << "  ";
-      subtitle_file_list.removeAt(index);
+      qDebug() << itr->absoluteFilePath();
+      QFile copy_file(subtitle_file_list.at(index).absoluteFilePath());
+      QString new_file_name(itr->absoluteFilePath());
+      new_file_name.remove(
+          new_file_name.lastIndexOf('.') + 1,
+          new_file_name.size() - new_file_name.lastIndexOf('.'));
+      new_file_name += subtitle_file_list.at(index).suffix();
+      qDebug() << new_file_name;
+      qDebug() << copy_file.copy(new_file_name);
     }
   }
 }
 
 int ss::Assembler::getBestMatchSubtitle(
     const QFileInfo &video_file, const QFileInfoList &subtitle_file_list) {
-  QStringList key_words = video_file.completeBaseName().split('.', QString::SkipEmptyParts);
+  QStringList key_words =
+      video_file.completeBaseName().split('.', QString::SkipEmptyParts);
   int index = -1;
   int score = -1;
   for (size_t i = 0; i < subtitle_file_list.size(); ++i) {
