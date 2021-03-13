@@ -1,3 +1,12 @@
+/**
+ * @file file_collector.h
+ * @brief 文件搜集器
+ * @author lyndon
+ * @date 2021-03-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
 #ifndef SS_FILE_COLLECTOR_H_
 #define SS_FILE_COLLECTOR_H_
 
@@ -6,56 +15,60 @@
 #include <QHash>
 
 namespace ss {
+/**
+ * @brief 文件搜集
+ *
+ */
 class FileCollector {
  public:
   FileCollector();
   virtual ~FileCollector();
 
   /**
-   * @brief Filter files.
+   * @brief 文件搜集执行操作
    *
    */
   virtual void collect() = 0;
 
   /**
-   * @brief Set the current dir.
+   * @brief 设置文件所在目录
    *
-   * @param dir
+   * @param dir 文件所在目录
    */
   void setCurrentDir(const QDir& dir);
 
   /**
-   * @brief Get the current dir.
+   * @brief 获取文件所在目录
    *
-   * @return const QDir&
+   * @return const QDir& 返回文件所在目录
    */
   const QDir& getCurrentDir() const;
 
   /**
-   * @brief Get collected file list.
+   * @brief 返回所获取的文件列表
    *
-   * @return const QFileInfoList&
+   * @return const QFileInfoList& 文件列表
    */
   const QFileInfoList& getFileList() const;
 
  protected:
   /**
-   * @brief Extensions of files.
+   * @brief 文件拓展名
    *
    */
   QHash<QString, QString> extensions_;
 
   /**
-   * @brief Current directory.
+   * @brief 当前目录
    *
    */
   QDir current_dir_;
   /**
-   * @brief The collected file list.
+   * @brief 文件列表
    *
    */
   QFileInfoList file_list_;
 };
 }  // namespace ss
 
-#endif
+#endif // !SS_FILE_COLLECTOR_H_
