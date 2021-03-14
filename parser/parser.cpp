@@ -67,21 +67,27 @@ bool ss::Parser::process(const QCoreApplication& app) {
   }
   if (parser_.isSet(sk)) subtitle_key_ = parser_.value(sk);
   if (parser_.isSet(vc)) clear_flag_ = true;
-  // 输出打印
-  std::cout << std::endl;
-  std::cout << "<请确认以下信息!>" << std::endl; 
-  std::cout << std::endl;
-  std::cout << "字幕目录: " << subtitle_dir_.absolutePath().toStdString() << std::endl;
-  std::cout << "视频目录: " << video_dir_.absolutePath().toStdString() << std::endl;
-  std::cout << "字幕扩展名: " << subtitle_extension_.toStdString() << std::endl;
-  std::cout << "字幕关键字: " << subtitle_key_.toStdString() << std::endl;
-  std::cout << "清理视频文件目录: " << clear_flag_ << std::endl;
-  std::cout << std::endl;
-  std::cout << "<按下Y继续, 否则退出!>";
-  char c;
-  std::cin >> c; 
-  if( (c != 'Y') && (c != 'y')) ret = false;
-  std::cout << std::endl; 
+  if (ret) {
+    // 输出打印
+    std::cout << std::endl;
+    std::cout << "<请确认以下信息!>" << std::endl;
+    std::cout << std::endl;
+    std::cout << "字幕目录: " << subtitle_dir_.absolutePath().toStdString()
+              << std::endl;
+    std::cout << "视频目录: " << video_dir_.absolutePath().toStdString()
+              << std::endl;
+    std::cout << "字幕扩展名: " << subtitle_extension_.toStdString()
+              << std::endl;
+    std::cout << "字幕关键字: " << subtitle_key_.toStdString() << std::endl;
+    std::cout << "清理视频文件目录: " << clear_flag_ << std::endl;
+    std::cout << std::endl;
+    std::cout << "<按下Y继续, 否则退出!>";
+    char c;
+    std::cin >> c;
+    if ((c != 'Y') && (c != 'y')) ret = false;
+    std::cout << std::endl;
+  }
+
   return ret;
 }
 
