@@ -9,13 +9,15 @@ void ss::SubtitleFileCollector::setKeyWords(const QString &words) {
 }
 
 void ss::SubtitleFileCollector::setExtension(const QString &extension) {
-  extensions_.clear();
-  extensions_.insert(extension, extension);
+  if (!extension.isEmpty()) {
+    extensions_.clear();
+    extensions_.insert(extension, extension);
+  }
 }
 
 void ss::SubtitleFileCollector::collect() {
   file_list_.clear();
-  // 1. 通过拓展名滤波
+  // 1. 通过扩展名滤波
   QFileInfoList tmp_file_list =
       current_dir_.entryInfoList(QDir::Files, QDir::Name);
   for (QFileInfoList::const_iterator itr = tmp_file_list.begin();

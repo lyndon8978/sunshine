@@ -30,8 +30,8 @@ class Assembler {
    * @param vfcp 视频文件搜集器
    * @param sfcp 字幕文件搜集器
    */
-  void assemble(VideoFileCollector::ConstPtr vfcp,
-                SubtitleFileCollector::ConstPtr sfcp);
+  void assemble(SubtitleFileCollector::ConstPtr sfcp,
+                VideoFileCollector::ConstPtr vfcp);
 
  private:
   /**
@@ -54,4 +54,4 @@ class Assembler {
 };
 }  // namespace ss
 
-#endif // !SS_ASSEMBLER_H_
+#endif  // !SS_ASSEMBLER_H_

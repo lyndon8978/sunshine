@@ -41,9 +41,9 @@ class SubtitleFileCollector : public FileCollector {
   void setKeyWords(const QString &words);
 
   /**
-   * @brief 设置字幕拓展名
+   * @brief 设置字幕扩展名
    *
-   * @param extension 拓展名
+   * @param extension 扩展名
    */
   void setExtension(const QString &extension);
 

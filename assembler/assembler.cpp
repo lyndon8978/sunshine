@@ -1,28 +1,29 @@
 #include "assembler.h"
 
-#include <QDebug>
+#include <iostream>
 
 ss::Assembler::Assembler() {}
 
 ss::Assembler::~Assembler() {}
 
-void ss::Assembler::assemble(VideoFileCollector::ConstPtr vfcp,
-                             SubtitleFileCollector::ConstPtr sfcp) {
+void ss::Assembler::assemble(SubtitleFileCollector::ConstPtr sfcp,
+                             VideoFileCollector::ConstPtr vfcp) {
   QFileInfoList video_file_list = vfcp->getFileList();
   QFileInfoList subtitle_file_list = sfcp->getFileList();
   for (QFileInfoList::const_iterator itr = video_file_list.begin();
        itr != video_file_list.end(); ++itr) {
     int index = getBestMatchSubtitle(*itr, subtitle_file_list);
     if (index > -1) {
-      qDebug() << itr->absoluteFilePath();
       QFile copy_file(subtitle_file_list.at(index).absoluteFilePath());
       QString new_file_name(itr->absoluteFilePath());
       new_file_name.remove(
           new_file_name.lastIndexOf('.') + 1,
           new_file_name.size() - new_file_name.lastIndexOf('.'));
       new_file_name += subtitle_file_list.at(index).suffix();
-      qDebug() << new_file_name;
-      qDebug() << copy_file.copy(new_file_name);
+      copy_file.copy(new_file_name);
+      std::cout << QFileInfo(copy_file).fileName().toStdString() << "  --->  "
+                << QFileInfo(new_file_name).fileName().toStdString()
+                << std::endl;
     }
   }
 }

@@ -51,9 +51,9 @@ class Parser {
    */
   const QString& getSubtitleKey() const;
   /**
-   * @brief 获取字幕文件拓展名
+   * @brief 获取字幕文件扩展名
    *
-   * @return const QString& 字幕文件拓展名
+   * @return const QString& 字幕文件扩展名
    */
   const QString& getSubtitleExtension() const;
   /**
@@ -81,7 +81,7 @@ class Parser {
    */
   QDir subtitle_dir_;
   /**
-   * @brief 字幕文件拓展名
+   * @brief 字幕文件扩展名
    *
    */
   QString subtitle_extension_;

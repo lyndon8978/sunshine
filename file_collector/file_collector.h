@@ -53,7 +53,7 @@ class FileCollector {
 
  protected:
   /**
-   * @brief 文件拓展名
+   * @brief 文件扩展名
    *
    */
   QHash<QString, QString> extensions_;
