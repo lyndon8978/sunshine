@@ -1,5 +1,7 @@
 #include <QApplication>
 
+#include <config.h>
+
 #include "assembler/assembler.h"
 #include "file_collector/subtitle_file_collector.h"
 #include "file_collector/video_file_collector.h"
@@ -7,6 +9,8 @@
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
+  QCoreApplication::setApplicationName(sunshine_PROJECT_NAME);
+  QCoreApplication::setApplicationVersion(sunshine_VERSION);
   ss::Parser parser;
   if (!parser.process(app)) return -1;
   ss::SubtitleFileCollector::Ptr sfc(new ss::SubtitleFileCollector);

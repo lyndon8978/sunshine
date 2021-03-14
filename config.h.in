@@ -1,0 +1,6 @@
+#define sunshine_PROJECT_NAME "@CMAKE_PROJECT_NAME@"
+#define sunshine_VERSION "@sunshine_VERSION@"
+//#define sunshine_VERSION_MAJOR @sunshine_VERSION_MAJOR@
+//#define sunshine_VERSION_MINOR @sunshine_VERSION_MINOR@
+//#define sunshine_VERSION_PATCH @sunshine_VERSION_PATCH@
+
